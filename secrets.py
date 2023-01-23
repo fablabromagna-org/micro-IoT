@@ -6,8 +6,8 @@
 # If you put them in the code you risk committing that info or sharing it
 
 secrets = {
-    'ssid' : 'IoT',
-    'password' : 'Itts2023',
+    'ssid' : 'FabLabRomagna',
+    'password' : 'Pressione1921!!',
     'aio_username' : 'my_adafruit_io_username',
     'aio_key' : 'my_adafruit_io_key',
     'timezone' : "America/New_York", # http://worldtimeapi.org/timezones
