@@ -3,3 +3,4 @@
 .vscode
 .metadata_never_index
 "System Volume Information"
+secrets.py
