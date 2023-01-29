@@ -10,13 +10,11 @@ import time
 # https://docs.google.com/spreadsheets/d/1LkNOM1B16-zjvHQdMEo2EpseA1GPHAQpP4YLxw8zfcc/edit#gid=0
 
 # ID dello script (ad ogni deploy fatto dentro l'editor AppScript, questo codice cambia)
-ID_GSHEET = "AKfycbwshOm973RgrSpFbVuArw9HJGmZTyWM27xGobcSX1wBkmh3jaSzt4msaAm2XcBbc36gSw"
-ID_GSHEET = "AKfycby-AJf9agC3O9LXCewBOHpEE7PHwFZrIYmASQGwj6IDRk10YB9ul5hIar_tNt4qRNSJwA"
-ID_GSHEET = "AKfycbweLEA1vrXL_jiXB-ErDOR1v9QzI-QU5q_tx4jzBDX8bq9CP9hy5lJOwP0SdC8L9gJigA"
-
+ID_GSHEET = "AKfycbzEZOXTxybDFQ8qzm8bmE6ai912bBdUBpvkk0_84kIeXMUJw-iZ95IfGufW_3Vz6gMnww"
 
 # la temperatura interna del Pico, in formato stringa
 temperatura = str(microcontroller.cpu.temperature)
+
 # il nome del chiamante (così da riconoscerlo...)
 nome = "Maurizio"
 
@@ -51,12 +49,23 @@ led = digitalio.DigitalInOut(board.LED)
 led.direction = digitalio.Direction.OUTPUT
 
 while True:
+    # Legge la temperatura
+    temperatura = str(microcontroller.cpu.temperature)
+    
+    # forma l'URL
+    COMANDO = "/exec?temperatura=" + temperatura + "&nome=" + nome
+    TEXT_URL = URL_GOOGLE + ID_GSHEET + COMANDO
+
+    # Esegue la chiamata alla API
     response = requests.get(TEXT_URL)
     print( "Text Response: ", response.text )
 
+    # in base alla risposta, accende il led
     statoLed = (json.loads(response.text))
     print( statoLed[0] )
     led.value = statoLed[0]
+    
+    response.close()
     time.sleep(1.5)
 
-response.close()
+

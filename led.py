@@ -1,11 +1,11 @@
 import time
-import digitalio
 import board
+import GestioneLed
 
-led = digitalio.DigitalInOut(board.GP20)
-led.direction = digitalio.Direction.OUTPUT
+led1 = GestioneLed.Led( board.LED, 0.1 )
+led2 = GestioneLed.Led( board.GP20, 0.5 )
+
 while True:
-    led.value = True
-    time.sleep(0.1)
-    led.value = False
-    time.sleep(0.1)
+    led1.toggle()
+    led2.toggle()
+

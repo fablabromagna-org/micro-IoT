@@ -7,7 +7,7 @@
 
 secrets = {
     'ssid' : 'IoT',
-    'password' : 'Fablab2023!!',
+    'password' : 'Itts2023',
     'aio_username' : 'my_adafruit_io_username',
     'aio_key' : 'my_adafruit_io_key',
     'timezone' : "America/New_York", # http://worldtimeapi.org/timezones
