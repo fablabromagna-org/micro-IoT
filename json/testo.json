@@ -1,0 +1,13 @@
+{
+   "nome" "Maurizio Conti",
+   "eta": 18,
+   "citta": "Rimini",
+   "linguaggi": [
+      "C/C++",
+      "C#",
+      "JavaScript",
+      "Python",
+      "Verilog",
+      "Rust"
+   ]
+}
