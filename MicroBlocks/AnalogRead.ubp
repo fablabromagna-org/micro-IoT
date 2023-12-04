@@ -1,0 +1,16 @@
+module main
+author unknown
+version 1 0 
+description ''
+variables data 
+
+script 104 59 {
+whenStarted
+local 'data' ('[data:makeList]')
+repeat 300 {
+  '[data:addLast]' (analogReadOp 27) data
+  printIt (at 'last' data)
+  waitMillis 100
+}
+}
+

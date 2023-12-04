@@ -1,0 +1,39 @@
+module main
+author unknown
+version 1 0 
+description ''
+variables pinNumber 
+
+  spec ' ' 'resettaPin' 'resettaPin _' 'auto' '10'
+  spec ' ' 'settaPin' 'settaPin _' 'num' 10
+
+to resettaPin pinNumber {
+  digitalWriteOp pinNumber false
+  waitMillis 1
+}
+
+to settaPin pinNumber {
+  digitalWriteOp pinNumber true
+  waitMillis 1
+}
+
+script 160 55 {
+  whenStarted
+  forever {
+    for i 25 {
+      callCustomCommand 'settaPin' ('[data:makeList]' i)
+    }
+    for i 25 {
+      callCustomCommand 'resettaPin' ('[data:makeList]' i)
+    }
+  }
+}
+
+script 439 57 {
+  to settaPin {}
+}
+
+script 447 197 {
+  to resettaPin {}
+}
+
