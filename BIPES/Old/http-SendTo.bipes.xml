@@ -1,0 +1,25 @@
+<xml xmlns="https://bipes.net.br">
+  <workspace>
+    <field name="DEVICE">ESP8266</field>
+    <field name="TIMESTAMP">1702892516610</field>
+    <freeboard><![CDATA[{"version":1,"allow_edit":true,"plugins":[],"panes":[],"datasources":[],"columns":3}]]></freeboard>
+    <databoard><![CDATA[{"currentWorkspace":"kvflqzky5js84d7x5pe","workspace:kvflqzky5js84d7x5pe":[]}]]></databoard> 
+  </workspace>
+  <block type="project_metadata" id="Z~zA1^f#W)zIhf`kXWC%" x="-212" y="-612">
+    <value name="project_author">
+      <shadow type="text" id="D,M4^S]rm[{759.!N9W@">
+        <field name="TEXT">Mauri</field>
+      </shadow>
+    </value>
+    <value name="project_iot_id">
+      <shadow type="math_number" id="Zvg;2Z?yfP/(IUKv)C^P">
+        <field name="NUM">2</field>
+      </shadow>
+    </value>
+    <value name="project_description">
+      <shadow type="text" id="QKGDUgXkT;I:Q,^,POR*">
+        <field name="TEXT">HTTP (Send to Adafruit)</field>
+      </shadow>
+    </value>
+  </block>
+</xml>

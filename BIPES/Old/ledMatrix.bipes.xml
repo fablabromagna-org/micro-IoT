@@ -1,0 +1,105 @@
+<xml xmlns="https://bipes.net.br">
+  <workspace>
+    <field name="DEVICE">RPI_Pico</field>
+    <field name="TIMESTAMP">1702830702943</field>
+    <freeboard><![CDATA[{"version":1,"allow_edit":true,"plugins":[],"panes":[],"datasources":[],"columns":3}]]></freeboard>
+    <databoard><![CDATA[{"currentWorkspace":"l1tfmmyi6e2g5ml0se8","workspace:l1tfmmyi6e2g5ml0se8":[]}]]></databoard> 
+  </workspace>
+  <variables>
+    <variable id="zK:o9J$q{fm)Q`2o-9Qh">i</variable>
+  </variables>
+  <block type="tm1640_init" id="yiQp8)I=?j9-|bKRNS??" x="-1238" y="-663">
+    <value name="clk">
+      <shadow type="math_number" id="c`]yEy`,^VNcBm|Or8W~">
+        <field name="NUM">21</field>
+      </shadow>
+    </value>
+    <value name="dio">
+      <shadow type="math_number" id="z.`u!XLpd%g%#|t7R0mM">
+        <field name="NUM">20</field>
+      </shadow>
+    </value>
+    <next>
+      <block type="delay" id="+N[4g$O|,c+#6tExLV!{">
+        <field name="SCALE">sleep</field>
+        <value name="TIME">
+          <shadow type="math_number" id=",gK+1A76ZrRw(-dY_B6e">
+            <field name="NUM">0.2</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="controls_for" id="pUtlftfna.Lek+kQ65*O">
+            <field name="VAR" id="zK:o9J$q{fm)Q`2o-9Qh">i</field>
+            <value name="FROM">
+              <shadow type="math_number" id="NHL3yj3VsWd*n^ahNCUH">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <value name="TO">
+              <shadow type="math_number" id="~[jLZC{(juW=w[?e}S?4">
+                <field name="NUM">10</field>
+              </shadow>
+            </value>
+            <value name="BY">
+              <shadow type="math_number" id="onZ:J(9GUOP;ijOO!Q6I">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <statement name="DO">
+              <block type="tm1640_num" id="{F%I_D[fb-z_WODKpU}H">
+                <value name="num">
+                  <shadow type="math_number" id="V0d!=@.PIZje$9zSp}L%">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="variables_get" id="P4~,*98lgqEGbSi*ZyZf">
+                    <field name="VAR" id="zK:o9J$q{fm)Q`2o-9Qh">i</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="relay_switch" id="zkh=gW8lkvC3/i}8Bqvp">
+                    <field name="RELAY_STATUS">1</field>
+                    <value name="pin">
+                      <shadow type="pinout" id="PQgSgOAa%7+7n.EE}!_P">
+                        <field name="DEVICE">RPI_Pico</field>
+                        <field name="PIN">25</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="delay_ms" id=":fiqRq+9td09PeEYN{z=">
+                        <value name="time">
+                          <shadow type="math_number" id="wL`01pWw~gCbd=8vxjXx">
+                            <field name="NUM">200</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="relay_switch" id="`DDEQKbWxFC(i.iwTW1H">
+                            <field name="RELAY_STATUS">0</field>
+                            <value name="pin">
+                              <shadow type="pinout" id="e$]@_C7qxA3Y(Nfo8.Et">
+                                <field name="DEVICE">RPI_Pico</field>
+                                <field name="PIN">25</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="delay_ms" id="[K|P5Xqfdb(=O?9W_f%w">
+                                <value name="time">
+                                  <shadow type="math_number" id="anD=gi-qcS+b$r/iujtp">
+                                    <field name="NUM">200</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>

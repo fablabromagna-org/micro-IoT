@@ -1,0 +1,42 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "Pot",
+						"value": "datasources[\"Adafruit\"][\"last_value\"]",
+						"units": "Volt",
+						"min_value": 0,
+						"max_value": "65536"
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "Adafruit",
+			"type": "JSON",
+			"settings": {
+				"url": "https://io.adafruit.com/api/v2/mconti/feeds/test",
+				"use_thingproxy": false,
+				"refresh": 5,
+				"method": "GET"
+			}
+		}
+	],
+	"columns": 3
+}

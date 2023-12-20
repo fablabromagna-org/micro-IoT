@@ -1,0 +1,227 @@
+<xml xmlns="https://bipes.net.br">
+  <workspace>
+    <field name="DEVICE">RPI_Pico</field>
+    <field name="TIMESTAMP">1702856529324</field>
+    <freeboard><![CDATA[{"version":1,"allow_edit":true,"plugins":[],"panes":[],"datasources":[],"columns":3}]]></freeboard>
+    <databoard><![CDATA[{"currentWorkspace":"kvflqzky5js84d7x5pe","workspace:kvflqzky5js84d7x5pe":[]}]]></databoard> 
+  </workspace>
+  <variables>
+    <variable id="$~K~a@O?@n2/eD(UUq@5">request</variable>
+    <variable id="VCGu^1)FG2!q,FRjo|uM">retVal</variable>
+    <variable id=":yHVHI|Zw}j{r!sFK5mr">temperatura</variable>
+  </variables>
+  <block type="procedures_defreturn" id="?^0P60N2iMQLPUicZnyl" x="-1212" y="-887">
+    <mutation>
+      <arg name="request" varid="$~K~a@O?@n2/eD(UUq@5"></arg>
+    </mutation>
+    <field name="NAME">GetJSON</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="exec_python" id="/3K@wwe^@(qffL#Q[5X?">
+        <value name="command">
+          <shadow type="text" id="ARn}0m$0txPr|C^F%4Sn">
+            <field name="TEXT">jsonR=request.json()</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="exec_python" id="a6R`@m%,$ZI5j8bTDL^=">
+            <value name="command">
+              <shadow type="text" id="^@fg$p`eyWOz`OG8w)T@">
+                <field name="TEXT">retVal=jsonR["last_value"]</field>
+              </shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="variables_get" id="Ol):).e29r,6nL?N;j.a">
+        <field name="VAR" id="VCGu^1)FG2!q,FRjo|uM">retVal</field>
+      </block>
+    </value>
+  </block>
+  <block type="project_metadata" id="J+!0/#_}2#6_Sf]vBiwn" x="-1588" y="-838">
+    <value name="project_author">
+      <shadow type="text" id="/sk*t%%bjlu/PI6kmrgc">
+        <field name="TEXT">Maurizio</field>
+      </shadow>
+    </value>
+    <value name="project_iot_id">
+      <shadow type="math_number" id=")N0%%ftSbX0+HXi?cJ!J">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="project_description">
+      <shadow type="text" id="#Nd.(n.5s%`/)_VkvGeQ">
+        <field name="TEXT">TestHTTP</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="controls_whileUntil" id=";SwG)4IU-]q@oYn3KWI|" x="-1587" y="-662">
+    <field name="MODE">WHILE</field>
+    <value name="BOOL">
+      <block type="logic_boolean" id="Y{H[Tl=W7M:#[}cPU6R)">
+        <field name="BOOL">TRUE</field>
+      </block>
+    </value>
+    <statement name="DO">
+      <block type="wifi_client_connect" id="4Lm43$x-xR=boZJ;29Bc">
+        <field name="NAME">connect to wifi network</field>
+        <field name="WIFI_CLIENT_NET_NAME">network name</field>
+        <field name="WIFI_CLIENT_NET_KEY">key/password</field>
+        <value name="wifi_client_essid">
+          <shadow type="text" id="r}xHg(Gei}IU-z}M}`7V">
+            <field name="TEXT">FabLabRomagna</field>
+          </shadow>
+        </value>
+        <value name="wifi_client_key">
+          <shadow type="text" id="|QMaOXDtQAz=orgBDi79">
+            <field name="TEXT">Pressione1921!!</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="variables_set" id="#vp4*D)X8i8~fvZ,G{i{" inline="false">
+            <field name="VAR" id="$~K~a@O?@n2/eD(UUq@5">request</field>
+            <value name="VALUE">
+              <block type="net_get_request" id="/?.p{[Z?7g#%rb2P@4NX">
+                <field name="BLOCK_NET_GET">URL</field>
+                <value name="URL">
+                  <block type="text" id="R35OfL,dpT^DGZ8w-V^K">
+                    <field name="TEXT">https://io.adafruit.com/api/v2/mconti/feeds/test</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="c8VsS(Iu@+4wcme`f{_W">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="-1eb}9-FH}KDcTp%_E$]">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="http_get_status" id="[2|8;lA`8B61Kf;^+G_v">
+                        <field name="request" id="$~K~a@O?@n2/eD(UUq@5">request</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="w5($5pVFc:`@7;S)ZDQY">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="text_print" id="yii|R]~)Xdg{DgaR77Yw">
+                    <value name="TEXT">
+                      <shadow xmlns="https://bipes.net.br" type="text" id=".buJ)`*ZmYWML3O.l=7;">
+                        <field name="TEXT">abc</field>
+                      </shadow>
+                      <block type="text_join" id="k_:Gj_0ya8qKfaB~j]V4">
+                        <mutation items="2"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id="{hA7FEs%Mr;$v5fx+cEO">
+                            <field name="TEXT">Success. Response content: </field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="http_get_content" id="AfSskD2y9sDTP5lCftRa">
+                            <field name="request" id="$~K~a@O?@n2/eD(UUq@5">request</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="Oa$WR9FQn$~k$|r%q-F5">
+                        <field name="VAR" id=":yHVHI|Zw}j{r!sFK5mr">temperatura</field>
+                        <value name="VALUE">
+                          <block type="procedures_callreturn" id="ooh1%nGnXpD]mtUvrXh_">
+                            <mutation name="GetJSON">
+                              <arg name="request"></arg>
+                            </mutation>
+                            <value name="ARG0">
+                              <block type="variables_get" id="KJ@UKqeJ.+I*X0Ci8hD)">
+                                <field name="VAR" id="$~K~a@O?@n2/eD(UUq@5">request</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="text_print" id="#i8.Bxj12~v8E8$+x/m]">
+                            <value name="TEXT">
+                              <shadow xmlns="https://bipes.net.br" type="text" id="s^@]re];:4jy27tG4N,F">
+                                <field name="TEXT">abc</field>
+                              </shadow>
+                              <block type="variables_get" id="qsekQf/o8xQRf?XGVmb$">
+                                <field name="VAR" id=":yHVHI|Zw}j{r!sFK5mr">temperatura</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="text_print" id="%,*0=#j,ElUS(wJa%vWY">
+                    <value name="TEXT">
+                      <shadow xmlns="https://bipes.net.br" type="text" id="I$%8.f,R%wQ?ByZ2Wv7j">
+                        <field name="TEXT">abc</field>
+                      </shadow>
+                      <block type="text_join" id="`e89{U}X*$YlddSSn_KV">
+                        <mutation items="2"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id="1HwNShhbGm83e*49!Am]">
+                            <field name="TEXT">Request Error. Status code = </field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="http_get_status" id=")-xoTLh;c_TT.%f}$9_/">
+                            <field name="request" id="$~K~a@O?@n2/eD(UUq@5">request</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="project_metadata" id="tc[w;$?Kw/8x|m2cT$qF" x="-212" y="-612">
+    <value name="project_author">
+      <shadow type="text" id="tf7skag5dZH`*~ySq8rk">
+        <field name="TEXT">Mauri</field>
+      </shadow>
+    </value>
+    <value name="project_iot_id">
+      <shadow type="math_number" id="VXT3^2g]!}LCc](c1hA1">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="project_description">
+      <shadow type="text" id="Yp}wuRl3loSWaF4c7Cuc">
+        <field name="TEXT">My project</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="project_metadata" id="QoNB_;nnhhmt~Ivm|+$C" x="-212" y="-612">
+    <value name="project_author">
+      <shadow type="text" id="^_nTP6~|m}0)W}fC7Op/">
+        <field name="TEXT">Mauri</field>
+      </shadow>
+    </value>
+    <value name="project_iot_id">
+      <shadow type="math_number" id="c9ze%{qD`m0CCD8BcNnY">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="project_description">
+      <shadow type="text" id="G)h^EpjgC^,%]^Xu`%!=">
+        <field name="TEXT">My project</field>
+      </shadow>
+    </value>
+  </block>
+</xml>

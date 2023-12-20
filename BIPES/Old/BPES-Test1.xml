@@ -1,0 +1,48 @@
+<xml xmlns="https://bipes.net.br">
+  <workspace>
+    <field name="DEVICE">RPI_Pico</field>
+    <field name="TIMESTAMP">1702834759571</field>
+    <freeboard><![CDATA[{"version":1,"allow_edit":true,"plugins":[],"panes":[],"datasources":[],"columns":3}]]></freeboard>
+    <databoard><![CDATA[{"currentWorkspace":"l1tfmmyi6e2g5ml0se8","workspace:l1tfmmyi6e2g5ml0se8":[]}]]></databoard> 
+  </workspace>
+  <block type="init_oled" id="q6VBPrHjC)_F_KmFqKX)" x="-1838" y="-888">
+    <value name="i2c">
+      <block type="math_number" id="Hr454liAfxDpsa{TbvK.">
+        <field name="NUM">1</field>
+      </block>
+    </value>
+    <value name="scl">
+      <shadow type="math_number" id=".zt598?S0({tRwcpXg98">
+        <field name="NUM">27</field>
+      </shadow>
+    </value>
+    <value name="sda">
+      <shadow type="math_number" id="oYBSE8i8VP3q83UT2qR~">
+        <field name="NUM">26</field>
+      </shadow>
+    </value>
+    <next>
+      <block type="clear_oled" id="dy5|;rOSPeV}!^b4i`[8">
+        <next>
+          <block type="write_oled" id="?$NvyKJw%Azu6od/X{ci">
+            <value name="x">
+              <shadow type="math_number" id="_-Tma_-g.n#,)^%y,G?2">
+                <field name="NUM">40</field>
+              </shadow>
+            </value>
+            <value name="y">
+              <shadow type="math_number" id="[nGeH1sX4U]K_c:zy@m6">
+                <field name="NUM">40</field>
+              </shadow>
+            </value>
+            <value name="text">
+              <shadow type="text" id="LePy[c-SAB:HsDBo;0CZ">
+                <field name="TEXT">Hello</field>
+              </shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>
