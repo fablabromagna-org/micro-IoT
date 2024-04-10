@@ -4,15 +4,17 @@
 #
 # maurizio.conti@fablabromagna.org
 # 14 novembre 2023
-#
+# 10 aprile 2024
 
 # queste lib sono già dentro al firmware di Circuit Python
+import board
 import ipaddress
 import ssl
 import wifi
 import socketpool
 import microcontroller
 import time
+import digitalio
 
 # Questa invece si scarica da qui
 # https://learn.adafruit.com/pages/20891/elements/3077480/download?type=zip
@@ -65,11 +67,17 @@ print( "Text Response: ", response.text )
 import json
 risposta = json.loads(response.text)
 
-# Verifichiamo che ci siano dati e procediamo
-if( (risposta[0] is not None) and (risposta[0]["value"] is not None) ):
-    # OK, ci siamo
-    print( risposta[0]["value"] )
-    #led.value = int(risposta["data"]["value"])
+if( len(risposta) > 0 ):
+    # Verifichiamo che ci siano dati e procediamo
+    if( (risposta[0] is not None) and (risposta[0]["value"] is not None) ):
+        # OK, ci siamo
+        print( risposta[0]["value"] )
+
+        # configuro il led a bordo
+        led = digitalio.DigitalInOut(board.LED)
+        led.direction = digitalio.Direction.OUTPUT
+
+        led.value = int(risposta[0]["value"])
     
 # Sempre buona cosa deallocare le risorse legate alla connessione
 response.close()
